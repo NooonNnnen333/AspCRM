@@ -1,0 +1,6 @@
+@CRMSolution.Web_HostAddress = http://localhost:5161
+
+GET {{CRMSolution.Web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
