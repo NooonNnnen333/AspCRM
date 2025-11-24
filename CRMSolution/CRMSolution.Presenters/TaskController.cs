@@ -1,4 +1,5 @@
-﻿using CRMSolution.Domain.Client;
+﻿using CRMSolution.Application;
+using CRMSolution.Domain.Client;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CRMSolution.Presenters;
@@ -7,9 +8,17 @@ namespace CRMSolution.Presenters;
 [Route("[controller]")]
 public class TaskController : ControllerBase
 {
+    private readonly ITaskService _iService;
+
+    public TaskController(ITaskService iService)
+    {
+        _iService = iService;
+    }
+
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateTaskDto request, CancellationToken cancellationToken)
     {
+        await _iService.Create(request, cancellationToken);
         return Ok();
     }
 
