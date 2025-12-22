@@ -8,13 +8,13 @@ namespace CRMSolution.Application;
 public class TaskService : ITaskService
 {
 
-    private readonly ITaskRepository _iTaskRepository;
+    private readonly ITaskRepository _taskRepository;
     private readonly ILogger<TaskC> _logger;
     private readonly IValidator<CreateTaskDto> _validator;
 
     public TaskService(ITaskRepository iTask, IValidator<CreateTaskDto> validator, ILogger<TaskC> logger)
     {
-        _iTaskRepository = iTask;
+        _taskRepository = iTask;
         _validator = validator;
         _logger = logger;
     }
@@ -22,7 +22,7 @@ public class TaskService : ITaskService
     public async Task<Guid> Create(CreateTaskDto request, CancellationToken cancellationToken)
     {
 
-        var validationResult = await _validator.ValidateAsync(request);
+        var validationResult = await _validator.ValidateAsync(request, cancellationToken);
         if (!validationResult.IsValid)
         {
             throw new ValidationException(validationResult.Errors);
@@ -36,8 +36,10 @@ public class TaskService : ITaskService
             request.ProductId,
             request.Headline,
             request.DeadLine);
+        
+        
 
-        await _iTaskRepository.AddAsync(taskC, cancellationToken);
+        await _taskRepository.AddAsync(taskC, cancellationToken);
         _logger.LogInformation("Task create with {taskId}", taskId);
 
         return request.TaskId;
