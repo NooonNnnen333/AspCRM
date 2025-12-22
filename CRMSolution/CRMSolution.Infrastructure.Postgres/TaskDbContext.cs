@@ -5,5 +5,5 @@ namespace CRMSolution.Infrastructure.Postgres;
 
 public class TaskDbContext : DbContext
 {
-    public DbSet<TaskC> Tasks { get; set; }
+    public DbSet<TaskC> tasks { get; set; }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace CRMSolution.Application;
+namespace CRMSolution.Infrastructure.Postgres;
 
 public interface ISqlConnectionFactory
 {

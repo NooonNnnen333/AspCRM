@@ -14,7 +14,7 @@ public class TaskEfCoreRepository : ITaskRepository
 
     public async Task<Guid> AddAsync(TaskC task, CancellationToken cancellationToken)
     {
-        await _dbContext.Tasks.AddAsync(task, cancellationToken);
+        await _dbContext.tasks.AddAsync(task, cancellationToken);
 
         await _dbContext.SaveChangesAsync(cancellationToken);
 
