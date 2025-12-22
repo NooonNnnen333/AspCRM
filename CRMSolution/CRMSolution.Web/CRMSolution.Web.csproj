@@ -16,6 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\CRMSolution.Infrastructure.Postgres\CRMSolution.Infrastructure.Postgres.csproj" />
       <ProjectReference Include="..\CRMSolution.Presenters\CRMSolution.Presenters.csproj" />
       <ProjectReference Include="..\src\CRMSolution.Domain\CRMSolution.Domain.csproj" />
     </ItemGroup>
