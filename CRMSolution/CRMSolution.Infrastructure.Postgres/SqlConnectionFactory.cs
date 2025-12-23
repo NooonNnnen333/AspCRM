@@ -16,7 +16,7 @@ public class SqlConnectionFactory : ISqlConnectionFactory
 
     public IDbConnection Create()
     {
-        var connection = new NpgsqlConnection(_configuration.GetConnectionString("Datebase"));
+        var connection = new NpgsqlConnection(_configuration.GetConnectionString("Database"));
 
         return connection;
     }

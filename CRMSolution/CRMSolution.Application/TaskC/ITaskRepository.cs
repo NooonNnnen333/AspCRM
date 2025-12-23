@@ -1,4 +1,3 @@
-﻿using CRMSolution.Application;
 using CRMSolution.Domain.Task;
 
 namespace CRMSolution.Application;
@@ -11,6 +10,7 @@ public interface ITaskRepository
 
     Task<Guid> DeleteAsync(Guid tasksId, CancellationToken cancellationToken);
 
-    Task<TaskC> GetByIdAsync(Guid tasksId, CancellationToken cancellationToken);
+    Task<TaskC?> GetByIdAsync(Guid tasksId, CancellationToken cancellationToken);
 
+    Task<List<TaskC>> GetAllAsync(CancellationToken cancellationToken);
 }

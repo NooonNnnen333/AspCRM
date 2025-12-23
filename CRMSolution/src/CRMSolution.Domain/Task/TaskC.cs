@@ -2,8 +2,8 @@ namespace CRMSolution.Domain.Task;
 
 public class TaskC
 {
-
-    public TaskC(Guid id,
+    public TaskC(
+        Guid id,
         List<Guid> emloyeesId,
         Guid productId,
         string title,
@@ -14,6 +14,12 @@ public class TaskC
         ProductId = productId;
         Title = title;
         DateOfPlaneDo = dateOfPlaneDo;
+        DateOfCreatedThis = DateOnly.FromDateTime(DateTime.UtcNow);
+    }
+
+    private TaskC()
+    {
+        EmloyeesId = new List<Guid>();
     }
 
     public Guid TaskId { get; set; }

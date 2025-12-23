@@ -1,4 +1,4 @@
-﻿using CRMSolution.Presenters;
+using CRMSolution.Presenters;
 using FluentValidation;
 
 namespace CRMSolution.Application;
@@ -9,6 +9,7 @@ public class CreateTaskValidator : AbstractValidator<CreateTaskDto>
     {
         RuleFor(x => x.ProductId).NotEmpty();
         RuleFor(x => x.Headline).NotEmpty();
-        RuleFor(x => x.Headline).NotEmpty();
+        RuleFor(x => x.DeadLine).GreaterThan(DateTime.UtcNow);
+        RuleFor(x => x.EmploeesId).NotEmpty();
     }
 }

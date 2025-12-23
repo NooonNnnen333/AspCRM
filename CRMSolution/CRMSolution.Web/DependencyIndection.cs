@@ -1,19 +1,20 @@
 ﻿using CRMSolution.Application;
 using CRMSolution.Infrastructure.Postgres;
 using FluentValidation;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CRMSolution.Web;
 
 public static class DependencyIndection
 {
-    public static IServiceCollection AddProgramDependencies(this IServiceCollection service)
+    public static IServiceCollection AddProgramDependencies(this IServiceCollection service, IConfiguration configuration)
     {
         service.AddWebDependencies();
 
         service.AddAppCollection();
 
-        service.AddPostgresInfrastructure();
+        service.AddPostgresInfrastructure(configuration);
 
         return service;
     }
