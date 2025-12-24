@@ -22,6 +22,7 @@ public static class DependencyIndection
     {
         service.AddControllers();
         service.AddOpenApi();
+        service.AddPostgresInfrastructure();
 
         return service;
     }

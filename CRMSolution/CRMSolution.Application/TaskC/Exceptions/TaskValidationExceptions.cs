@@ -1,6 +1,4 @@
 ﻿namespace CRMSolution.Application.Exceptions;
 
-public class TaskValidationExceptions
-{
-    
-}
+public class TaskValidationException(string massage)
+        : BadRequestException(massage);
