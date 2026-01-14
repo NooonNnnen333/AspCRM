@@ -2,9 +2,8 @@
 
 public class TaskNotFound : NotFoundException
 {
-    public TaskNotFound(Guid id)
-        : base("Task", id)
+    public TaskNotFound(Shared.Error[] errors)
+        : base(errors)
     {
     }
-    
 }

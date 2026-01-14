@@ -1,7 +1,10 @@
-﻿using CRMSolution.Domain.Task;
+﻿using CRMSolution.Application.Exceptions;
+using CRMSolution.Application.Extension;
+using CRMSolution.Domain.Task;
 using CRMSolution.Presenters;
 using FluentValidation;
 using Microsoft.Extensions.Logging;
+using Shared;
 
 namespace CRMSolution.Application;
 
@@ -25,19 +28,19 @@ public class TaskService : ITaskService
         var validationResult = await _validator.ValidateAsync(request, cancellationToken);
         if (!validationResult.IsValid)
         {
-            throw new ValidationException(validationResult.Errors);
+            //throw new TaskValidationException(validationResult.Errors.Select(e => e.ErrorMessage).ToArray());
+            throw new TaskValidationException(validationResult.ToErrors());
         }
 
         var taskId = Guid.NewGuid();
-
         var taskC = new TaskC(
             taskId,
             request.EmploeesId,
             request.ProductId,
             request.Headline,
             request.DeadLine);
-        
-        
+
+
 
         await _taskRepository.AddAsync(taskC, cancellationToken);
         _logger.LogInformation("Task create with {taskId}", taskId);

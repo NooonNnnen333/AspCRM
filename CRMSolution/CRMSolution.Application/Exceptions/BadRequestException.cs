@@ -1,14 +1,15 @@
-﻿namespace CRMSolution.Application.Exceptions;
+﻿using System.Text.Json;
+using Shared;
 
+namespace CRMSolution.Application.Exceptions;
+
+/// <summary>
+/// Некорректный запрос
+/// </summary>
 public class BadRequestException : Exception
 {
-    protected BadRequestException(string message)
-        : base(message)
-    {
-    }
-
-    protected BadRequestException(List<string> errors)
-        : base(string.Join(", ", errors))
+    protected BadRequestException(Shared.Error[] errors)
+        : base(JsonSerializer.Serialize(errors))
     {
     }
 }

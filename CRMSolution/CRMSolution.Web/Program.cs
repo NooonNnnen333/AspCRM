@@ -1,8 +1,8 @@
 using CRMSolution.Application;
 using CRMSolution.Web;
+using CRMSolution.Web.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
-
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
@@ -10,6 +10,8 @@ builder.Services.AddOpenApi();
 builder.Services.AddProgramDependencies();
 
 var app = builder.Build();
+
+app.UseExceptionMidleware(); // исползование метода с обработкой исключений
 
 if (app.Environment.IsDevelopment())
 {

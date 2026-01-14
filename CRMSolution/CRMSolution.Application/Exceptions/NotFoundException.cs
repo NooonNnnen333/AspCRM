@@ -1,9 +1,12 @@
-﻿namespace CRMSolution.Application.Exceptions;
+﻿using System.Text.Json;
+using Shared;
+
+namespace CRMSolution.Application.Exceptions;
 
 public class NotFoundException : Exception
 {
-    public NotFoundException(string record, Guid id)
-    : base($"{record} with id {id} not found")
+    public NotFoundException(Shared.Error[] errors)
+    : base(JsonSerializer.Serialize(errors))
     {
     }
 }
