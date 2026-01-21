@@ -3,6 +3,10 @@ namespace CRMSolution.Domain.Task;
 public class TaskC
 {
 
+    protected TaskC()
+    {
+    }
+
     public TaskC(Guid id,
         List<Guid> emloyeesId,
         Guid productId,
@@ -18,21 +22,21 @@ public class TaskC
 
     public Guid TaskId { get; set; }
 
-    public List<Guid> EmloyeesId { get; set; } // Id работника(ов), которые будут задействованы в этой задачи
+    public List<Guid>? EmloyeesId { get; set; } // Id работника(ов), которые будут задействованы в этой задачи
 
-    public Guid ClientId { get; set; } // Id клиента, с которым связана задача
+    public Guid? ClientId { get; set; } // Id клиента, с которым связана задача
 
-    public Guid ProductId { get; set; } // Id продукта/услуги
+    public Guid? ProductId { get; set; } // Id продукта/услуги
 
     public string Title { get; set; } = string.Empty;
 
     public DateOnly DateOfCreatedThis { get; set; } // Дата создания
 
-    public DateTime DateOfPlaneDo { get; set; } // Время выполнения / на сколько назначен созвон/встреча
+    public DateTime? DateOfPlaneDo { get; set; } // Время выполнения / на сколько назначен созвон/встреча
 
-    public string Note { get; set; } = string.Empty;
+    public string? Note { get; set; } = string.Empty;
 
-    public Status Status { get; set; }
+    public Status? StatusTask { get; set; }
 
 }
 

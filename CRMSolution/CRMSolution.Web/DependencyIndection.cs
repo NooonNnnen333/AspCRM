@@ -7,13 +7,13 @@ namespace CRMSolution.Web;
 
 public static class DependencyIndection
 {
-    public static IServiceCollection AddProgramDependencies(this IServiceCollection service)
+    public static IServiceCollection AddProgramDependencies(this IServiceCollection service, IConfiguration configuration)
     {
         service.AddWebDependencies();
 
         service.AddAppCollection();
 
-        service.AddPostgresInfrastructure();
+        service.AddPostgresInfrastructure(configuration);
 
         return service;
     }
@@ -22,7 +22,6 @@ public static class DependencyIndection
     {
         service.AddControllers();
         service.AddOpenApi();
-        service.AddPostgresInfrastructure();
 
         return service;
     }

@@ -19,7 +19,7 @@ public class TaskSqlRepositories : ITaskRepository
     {
         const string sql = """
                             INSERT INTO tasks (task_id, emloyees_id, client_id, product_id, title, date_of_created_this, date_of_plane_do, note, status) 
-                           VALUES (@TaskId, @EmloyeesId, @ClientId, @ProductId, @Title, @DateOfCreatedThis, @DateOfPlaneDo, @Note, @Status)
+                           VALUES (@TaskId, @EmloyeesId, @ClientId, @ProductId, @Title, @DateOfCreatedThis, @DateOfPlaneDo, @Note, @StatusTask)
                            """;
         using var connection = _sqlConnectionFactory.Create();
         await connection.ExecuteAsync(sql, new
@@ -32,7 +32,7 @@ public class TaskSqlRepositories : ITaskRepository
             DateOfCreatedThis = _task.DateOfCreatedThis,
             DateOfPlaneDo = _task.DateOfPlaneDo,
             Note = _task.Note,
-            Status = _task.Status,
+            Status = _task.StatusTask,
         });
 
         return _task.TaskId;

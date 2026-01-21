@@ -10,6 +10,10 @@ public static class DependencyIndection
         service.AddValidatorsFromAssembly(typeof(DependencyIndection).Assembly);
 
         service.AddScoped<ITaskService, TaskService>();
+        service.AddScoped<IClientService, ClientService>();
+        service.AddScoped<IEmployeesService, EmployeesService>();
+        service.AddScoped<ICompanyesClientsService, CompanyesClientsService>();
+        service.AddScoped<IProductsService, ProductsService>();
 
         return service;
     }
