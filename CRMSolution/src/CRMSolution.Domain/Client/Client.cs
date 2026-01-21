@@ -2,28 +2,28 @@ namespace CRMSolution.Domain.Client;
 
 public class Client
 {
-
-    
-    public Client() { }
-
+    public Client()
+    {
+    }
 
     public Client(
-        string _clientId,
-        string _name,
-        string _famaly,
-        string _otchestvo,
-        string _mail,
-        string _numberOfPhone,
-        int _numbersOfReqest,
-        string _passpor_t)
+        Guid clientId,
+        string name,
+        string famaly,
+        string? otchestvo,
+        string mail,
+        string numberOfPhone,
+        int numbersOfReqest,
+        string passport)
     {
-        _name = Name;
-        _famaly = Famaly;
-        _otchestvo = Otchestvo;
-        _mail = Mail;
-        _numberOfPhone = NumberOfPhone;
-        _numbersOfReqest = NumbersOfReqest;
-        _passpor_t = Passport;
+        ClientId = clientId;
+        Name = name;
+        Famaly = famaly;
+        Otchestvo = otchestvo;
+        Mail = mail;
+        NumberOfPhone = numberOfPhone;
+        NumbersOfReqest = numbersOfReqest;
+        Passport = passport;
     }
 
     public required Guid ClientId { get; set; }
@@ -43,7 +43,6 @@ public class Client
     public required string Passport { get; set; } // Паспортные данные
 
 }
-
 
 
 
