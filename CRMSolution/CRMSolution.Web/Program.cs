@@ -7,10 +7,22 @@ using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var allowedOrigins = "AllowFrontend";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(allowedOrigins, p =>
+        p.WithOrigins("http://localhost:5173") // точь‑в‑точь, без слэша
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials());
+});
+
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 builder.Services.AddProgramDependencies(builder.Configuration);
+
 
 var jwtKey = builder.Configuration["Jwt:Key"];
 if (string.IsNullOrWhiteSpace(jwtKey))
@@ -39,6 +51,9 @@ builder.Services.AddAuthorization();
 var app = builder.Build();
 
 app.UseExceptionMidleware(); // исползование метода с обработкой исключений
+
+app.UseCors(allowedOrigins);
+
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -48,7 +63,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(options => options.SwaggerEndpoint("/openapi/v1.json", "CRMSolutions"));
 }
 
-app.MapControllers().RequireAuthorization();
+app.MapControllers();
 
 
 
