@@ -13,4 +13,5 @@ public interface ITaskRepository
 
     Task<TaskC> GetByIdAsync(Guid tasksId, CancellationToken cancellationToken);
 
+    Task<IReadOnlyList<TaskC>> GetAllAsync(CancellationToken cancellationToken);
 }

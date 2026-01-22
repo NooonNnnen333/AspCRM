@@ -5,3 +5,8 @@ public record CreateCompanyesClientsDto(
     string Mail,
     string NumberOfPhone,
     string Inn);
+
+public record UpdateCompanyesClientsDto(
+    string Mail,
+    string NumberOfPhone,
+    string Inn);

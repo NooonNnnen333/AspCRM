@@ -1,5 +1,4 @@
 ﻿using CRMSolution.Application;
-using CRMSolution.Domain.Client;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CRMSolution.Presenters;
@@ -31,24 +30,28 @@ public class TaskController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> Get([FromQuery] GetTasksDto tasksDto, CancellationToken cancellationToken)
     {
+        var tasks = await _iService.GetAll(cancellationToken);
+        return Ok(tasks);
+    }
+
+    [HttpGet("{taskId:guid}")]
+    public async Task<IActionResult> GetByTask([FromRoute] Guid taskId, CancellationToken cancellationToken)
+    {
+        var task = await _iService.GetById(taskId, cancellationToken);
+        return Ok(task);
+    }
+
+    [HttpPut("{taskId:guid}")]
+    public async Task<IActionResult> Update([FromRoute] Guid taskId, [FromBody] UpdateTasksDto request, CancellationToken cancellationToken)
+    {
+        await _iService.Update(taskId, request, cancellationToken);
         return Ok();
     }
 
-    [HttpGet("{usersId:guid}")]
-    public async Task<IActionResult> GetByTask([FromRoute] Guid usersId, CancellationToken cancellationToken)
+    [HttpDelete("{taskId:guid}")]
+    public async Task<IActionResult> Delite([FromRoute] Guid taskId, CancellationToken cancellationToken)
     {
-        return Ok();
-    }
-
-    [HttpPut("{userId:guid}")]
-    public async Task<IActionResult> Update([FromRoute] Guid userId, [FromBody] UpdateTasksDto request, CancellationToken cancellationToken)
-    {
-        return Ok();
-    }
-
-    [HttpDelete("{taskId}/{userId}")]
-    public async Task<IActionResult> Delite([FromRoute] Guid taskId, [FromRoute] Guid userId, CancellationToken cancellationToken)
-    {
+        await _iService.Delete(taskId, cancellationToken);
         return Ok();
     }
 }

@@ -10,3 +10,11 @@ public record CreateEmployeesDto(
     string Mail,
     Role Role,
     string NumberOfPhone);
+
+public record UpdateEmployeesDto(
+    string Name,
+    string Famaly,
+    string? Otchestvo,
+    string Mail,
+    Role Role,
+    string NumberOfPhone);

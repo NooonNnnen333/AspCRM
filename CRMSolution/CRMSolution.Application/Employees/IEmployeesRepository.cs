@@ -11,4 +11,6 @@ public interface IEmployeesRepository
     Task<Guid> DeleteAsync(Guid employeesId, CancellationToken cancellationToken);
 
     Task<Employees> GetByIdAsync(Guid employeesId, CancellationToken cancellationToken);
+
+    Task<IReadOnlyList<Employees>> GetAllAsync(CancellationToken cancellationToken);
 }

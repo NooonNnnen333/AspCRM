@@ -11,4 +11,6 @@ public interface IProductsRepository
     Task<Guid> DeleteAsync(Guid productId, CancellationToken cancellationToken);
 
     Task<Products> GetByIdAsync(Guid productId, CancellationToken cancellationToken);
+
+    Task<IReadOnlyList<Products>> GetAllAsync(CancellationToken cancellationToken);
 }
