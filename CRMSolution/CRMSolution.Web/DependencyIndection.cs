@@ -1,5 +1,6 @@
 ﻿using CRMSolution.Application;
 using CRMSolution.Infrastructure.Postgres;
+using CRMSolution.Web.Security;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,6 +15,7 @@ public static class DependencyIndection
         service.AddAppCollection();
 
         service.AddPostgresInfrastructure(configuration);
+        service.AddScoped<ITokenService, JwtTokenService>();
 
         return service;
     }
