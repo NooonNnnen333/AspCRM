@@ -28,7 +28,7 @@ public class TaskController : ControllerBase
     // }
 
     [HttpGet]
-    public async Task<IActionResult> Get([FromQuery] GetTasksDto tasksDto, CancellationToken cancellationToken)
+    public async Task<IActionResult> Get(CancellationToken cancellationToken)
     {
         var tasks = await _iService.GetAll(cancellationToken);
         return Ok(tasks);

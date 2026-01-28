@@ -12,7 +12,7 @@ var allowedOrigins = "AllowFrontend";
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(allowedOrigins, p =>
-        p.WithOrigins("http://localhost:5173") // точь‑в‑точь, без слэша
+        p.WithOrigins("http://localhost:5173")
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials());

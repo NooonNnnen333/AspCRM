@@ -32,16 +32,19 @@ public class EmployeesService : IEmployeesService
             throw new ValidationException(validationResult.Errors);
         }
 
-        var employeesId = Guid.NewGuid();
-        var employees = new Employees
+        Guid employeesId = Guid.NewGuid();
+        var employees = new Employees(
+            employeesId,
+            request.Name,
+            request.Famaly,
+            request.Otchestvo,
+            request.Mail,
+            request.Role,
+            request.NumberOfPhone)
         {
             EmployeesId = employeesId,
             Name = request.Name,
             Famaly = request.Famaly,
-            Otchestvo = request.Otchestvo,
-            Mail = request.Mail,
-            Role = request.Role,
-            NumberOfPhone = request.NumberOfPhone
         };
 
         await _employeesRepository.AddAsync(employees, cancellationToken);
@@ -68,16 +71,20 @@ public class EmployeesService : IEmployeesService
             throw new ValidationException(validationResult.Errors);
         }
 
-        var employees = new Employees
+        var employees = new Employees(
+            employeesId,
+            request.Name,
+            request.Famaly,
+            request.Otchestvo,
+            request.Mail,
+            request.Role,
+            request.NumberOfPhone)
         {
-            EmployeesId = employeesId,
-            Name = request.Name,
-            Famaly = request.Famaly,
-            Otchestvo = request.Otchestvo,
-            Mail = request.Mail,
-            Role = request.Role,
-            NumberOfPhone = request.NumberOfPhone
+            EmployeesId = default,
+            Name = null,
+            Famaly = null
         };
+
 
         await _employeesRepository.SaveAsync(employees, cancellationToken);
         _logger.LogInformation("Employees updated with {employeesId}", employeesId);

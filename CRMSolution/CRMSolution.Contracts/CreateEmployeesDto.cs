@@ -3,7 +3,7 @@ using CRMSolution.Domain.Emploees;
 namespace CRMSolution.Presenters;
 
 public record CreateEmployeesDto(
-    Guid EmployeesId,
+    Guid ClientId,
     string Name,
     string Famaly,
     string? Otchestvo,

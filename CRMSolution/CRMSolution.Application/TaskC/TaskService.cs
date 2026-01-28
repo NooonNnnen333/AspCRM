@@ -42,8 +42,6 @@ public class TaskService : ITaskService
             request.ProductId,
             request.Headline,
             request.DeadLine);
-        
-        
 
         await _taskRepository.AddAsync(taskC, cancellationToken);
         _logger.LogInformation("Task create with {taskId}", taskId);

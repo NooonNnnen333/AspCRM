@@ -6,25 +6,25 @@ public class Client
     {
     }
 
-    public Client(
-        Guid clientId,
-        string name,
-        string famaly,
-        string? otchestvo,
-        string mail,
-        string numberOfPhone,
-        int numbersOfReqest,
-        string passport)
-    {
-        ClientId = clientId;
-        Name = name;
-        Famaly = famaly;
-        Otchestvo = otchestvo;
-        Mail = mail;
-        NumberOfPhone = numberOfPhone;
-        NumbersOfReqest = numbersOfReqest;
-        Passport = passport;
-    }
+    // public Client(
+    //     Guid clientId,
+    //     string name,
+    //     string famaly,
+    //     string? otchestvo,
+    //     string mail,
+    //     string numberOfPhone,
+    //     int numbersOfReqest,
+    //     string passport)
+    // {
+    //     ClientId = clientId;
+    //     Name = name;
+    //     Famaly = famaly;
+    //     Otchestvo = otchestvo;
+    //     Mail = mail;
+    //     NumberOfPhone = numberOfPhone;
+    //     NumbersOfReqest = numbersOfReqest;
+    //     Passport = passport;
+    // }
 
     public required Guid ClientId { get; set; }
 
